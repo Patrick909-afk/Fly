@@ -1,24 +1,12 @@
-This is free and unencumbered software released into the public domain.
-
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
-
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-
-For more information, please refer to <https://unlicense.org>
+local sg=Instance.new("ScreenGui")sg.Parent=game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local mf=Instance.new("Frame")mf.Size=UDim2.new(0,200,0,300)mf.Position=UDim2.new(0,10,0,10)mf.BackgroundColor3=Color3.fromRGB(0,0,0)mf.BackgroundTransparency=0.5mf.Visible=falsemf.Parent=sg
+local ob=Instance.new("TextButton")ob.Size=UDim2.new(0,100,0,50)ob.Position=UDim2.new(0,10,0,320)ob.Text="Меню"ob.BackgroundColor3=Color3.fromRGB(0,0,0)ob.TextColor3=Color3.fromRGB(255,255,255)ob.Parent=sg
+local fb=Instance.new("TextButton")fb.Size=UDim2.new(0,180,0,50)fb.Position=UDim2.new(0,10,0,10)fb.Text="Флай"fb.BackgroundColor3=Color3.fromRGB(0,0,0)fb.TextColor3=Color3.fromRGB(255,255,255)fb.Parent=mf
+local ib=Instance.new("TextButton")ib.Size=UDim2.new(0,180,0,50)ib.Position=UDim2.new(0,10,0,70)ib.Text="Бессмертие"ib.BackgroundColor3=Color3.fromRGB(0,0,0)ib.TextColor3=Color3.fromRGB(255,255,255)ib.Parent=mf
+local cb=Instance.new("TextButton")cb.Size=UDim2.new(0,180,0,50)cb.Position=UDim2.new(0,10,0,130)cb.Text="Закрыть"cb.BackgroundColor3=Color3.fromRGB(0,0,0)cb.TextColor3=Color3.fromRGB(255,255,255)cb.Parent=mf
+ob.MouseButton1Click:Connect(function()mf.Visible=not mf.Visible end)
+local f=false
+fb.MouseButton1Click:Connect(function()f=not f;local hr=game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")if f then local bv=Instance.new("BodyVelocity")bv.MaxForce=Vector3.new(100000,100000,100000)bv.Velocity=Vector3.new(0,50,0)bv.Parent=hr;fb.Text="Отключить"else for _,v in pairs(hr:GetChildren())do if v:IsA("BodyVelocity")then v:Destroy()end end;fb.Text="Включить"end end)
+local i=false
+ib.MouseButton1Click:Connect(function()i=not i;local h=game.Players.LocalPlayer.Character:WaitForChild("Humanoid")if i then h.MaxHealth=math.huge h.Health=math.huge ib.Text="Отключить"else h.MaxHealth=100 h.Health=100 ib.Text="Бессмертие"end end)
+cb.MouseButton1Click:Connect(function()mf.Visible=false end)
